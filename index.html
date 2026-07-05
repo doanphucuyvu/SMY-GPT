@@ -1335,7 +1335,7 @@
           <div class="avatar bot"><i class="fas fa-robot"></i></div>
           <div class="message-content">
             Xin chào! Mình là SMY GPT, trợ lý ảo của CLB Khoa học STEM MyDinh trường THPT Mỹ Đình. 
-            Hãy chọn câu hỏi bên trái hoặc nhập câu hỏi của bạn để bắt đầu! Chế độ AI chưa hoàn thiện, bạn hãy chọn câu hỏi từ thanh bên trái!
+            Hãy chọn câu hỏi bên trái ( trên điện thoại là nút ? ở góc màn hình ). 
           </div>
         </div>
       </div>
@@ -1404,7 +1404,7 @@
     const faqData = {
       "Giới thiệu chung về CLB SMY": "STEM MyDinh là một câu lạc bộ trực thuộc trường THPT Mỹ Đình, được thành lập vào tháng 5 năm 2024, với mục tiêu phát triển cách tiếp cận khoa học theo hướng mới mẻ, gần gũi và mang đậm dấu ấn cá nhân của thế hệ trẻ. Câu lạc bộ hướng tới khám phá các khía cạnh tư duy trong mỗi con người, bứt phá giới hạn tưởng tượng của bản thân, biến khoa học tưởng chừng khô khan trở nên đầy sắc màu hơn dưới lăng kính của tuổi trẻ. Thông qua các hoạt động tương tác xoay quanh những chủ đề khoa học gần gũi, STEM MyDinh tạo điều kiện để mỗi người thể hiện góc nhìn cá nhân, rèn luyện tư duy khoa học và phá bỏ rào cản tiếp cận tri thức.",
       "Ý nghĩa tên gọi SMY": "Tên tiếng Việt: Câu lạc bộ Khoa học. Tên tiếng Anh: SMY - STEM MyDinh. SMY không chỉ là cái tên mang tính biểu tượng của câu lạc bộ, nó còn mang ý nghĩa là “tiếng cười” - Không chỉ là tâm trạng vui vẻ mà còn đại diện cho tuổi trẻ đầy năng động, nhiệt huyết, tràn đầy sự vui tươi và sức sống.",
-      "Thông tin liên hệ": "Fanpage: https://www.facebook.com/profile.php?id=61560186575846&mibextid=kFxxJD\nGmail: stemmydinh@gmail.com",
+      "Thông tin liên hệ": "Fanpage: https://www.facebook.com/STEMofMyDinh/ \nGmail: stemmydinh@gmail.com",
       "Sứ mệnh": "Tạo dựng môi trường giao lưu, sinh hoạt lành mạnh, bổ ích và xây dựng nền tảng học tập hiệu quả thông qua các hoạt động về STEM (Science - Khoa học, Technology - Công nghệ, Engineering - Kỹ thuật, Mathematics - Toán học). Nâng cao khả năng tư duy về các lĩnh vực khoa học và khả năng cạnh tranh trong thời đại phát triển mạnh mẽ của nền khoa học.",
       "Tầm nhìn": "Thông qua các hoạt động và chương trình góp phần thúc đẩy niềm yêu thích của học sinh tới các môn khoa học và tạo cơ hội tiếp xúc trực tiếp, tiếp thu và rèn luyện qua thực hành cho học sinh. Câu lạc bộ phối hợp với trường xây dựng các chuyên đề khoa học thông qua các hình thức khác nhau tiếp cận tới học sinh trong và ngoài trường.\n- Xây dựng các nhóm học sinh nhằm mục đích nghiên cứu, phát triển các lĩnh vực trong khả năng.",
       "Ban điều hành": "Cố vấn: Thầy Phạm Văn Tùng – GVBM Vật Lý.\nChủ tịch: Đoàn Phúc Uy Vũ - K5A8.\nPhó Chủ tịch: Đàm Đông Quân - K5A5",
@@ -1774,7 +1774,7 @@
           const question = this.textContent.trim();
           addMessage(question, 'user');
           showTyping();
-          const answer = faqData[question] || "Mọi thông tin thắc mắc xin liên hệ: Gmail: stemmydinh@gmail.com. Chủ tịch: Đoàn Phúc Uy Vũ - K5A8; Phó chủ tịch: Đàm Đông Quân - K5A5 hoặc nhắn tin trực tiếp qua trang để nhận được phản hồi sớm nhất!";
+          const answer = faqData[question] || "Mọi thông tin thắc mắc xin liên hệ: Gmail: stemmydinh@gmail.com. Chủ tịch: Đoàn Phúc Uy Vũ - K5A8; Phó chủ tịch: Đàm Đông Quân - K5A5 hoặc nhắn tin trực tiếp qua trang ( https://www.facebook.com/STEMofMyDinh/ ) để nhận được phản hồi sớm nhất!";
           setTimeout(() => {
             removeTyping();
             addMessage(answer, 'bot');
