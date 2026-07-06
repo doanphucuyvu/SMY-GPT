@@ -403,6 +403,7 @@
       position: relative;
       font-size: 0.95rem;
       letter-spacing: -0.01em;
+      white-space: pre-wrap; /* hỗ trợ xuống dòng và giữ khoảng trắng */
     }
 
     .bot .message-content {
@@ -1564,8 +1565,7 @@
         <div class="message bot">
           <div class="avatar bot"><i class="fas fa-robot"></i></div>
           <div class="message-content">
-            Xin chào! Mình là SMY GPT, trợ lý ảo của CLB Khoa học STEM MyDinh trường THPT Mỹ Đình. 
-            Hãy chọn câu hỏi bên trái ( trên điện thoại là nút ? ở góc màn hình ). 
+            Xin chào! Chào mừng bạn đến với SMY GPT. Mình được tạo ra để giúp bạn tìm hiểu nhanh về CLB Khoa học STEM MyDinh – từ thông tin CLB, cơ cấu tổ chức, quyền lợi hội viên cho đến cách tham gia. Bạn có thể đặt câu hỏi trực tiếp, hoặc chọn một câu hỏi có sẵn ở thanh bên trái (trên điện thoại là nút ? ở góc màn hình) để bắt đầu. 
           </div>
         </div>
       </div>
@@ -1630,30 +1630,30 @@
   </div>
 
   <script>
-    // ===== DỮ LIỆU FAQ =====
+    // ===== DỮ LIỆU FAQ (đã định dạng xuống dòng) =====
     const faqData = {
       "Giới thiệu chung về CLB SMY": "STEM MyDinh là một câu lạc bộ trực thuộc trường THPT Mỹ Đình, được thành lập vào tháng 5 năm 2024, với mục tiêu phát triển cách tiếp cận khoa học theo hướng mới mẻ, gần gũi và mang đậm dấu ấn cá nhân của thế hệ trẻ. Câu lạc bộ hướng tới khám phá các khía cạnh tư duy trong mỗi con người, bứt phá giới hạn tưởng tượng của bản thân, biến khoa học tưởng chừng khô khan trở nên đầy sắc màu hơn dưới lăng kính của tuổi trẻ. Thông qua các hoạt động tương tác xoay quanh những chủ đề khoa học gần gũi, STEM MyDinh tạo điều kiện để mỗi người thể hiện góc nhìn cá nhân, rèn luyện tư duy khoa học và phá bỏ rào cản tiếp cận tri thức.",
-      "Ý nghĩa tên gọi SMY": "Tên tiếng Việt: Câu lạc bộ Khoa học. Tên tiếng Anh: SMY - STEM MyDinh. SMY không chỉ là cái tên mang tính biểu tượng của câu lạc bộ, nó còn mang ý nghĩa là “tiếng cười” - Không chỉ là tâm trạng vui vẻ mà còn đại diện cho tuổi trẻ đầy năng động, nhiệt huyết, tràn đầy sự vui tươi và sức sống.",
-      "Thông tin liên hệ": "Fanpage: https://www.facebook.com/STEMofMyDinh/ \nGmail: stemmydinh@gmail.com",
-      "Sứ mệnh": "Tạo dựng môi trường giao lưu, sinh hoạt lành mạnh, bổ ích và xây dựng nền tảng học tập hiệu quả thông qua các hoạt động về STEM (Science - Khoa học, Technology - Công nghệ, Engineering - Kỹ thuật, Mathematics - Toán học). Nâng cao khả năng tư duy về các lĩnh vực khoa học và khả năng cạnh tranh trong thời đại phát triển mạnh mẽ của nền khoa học.",
+      "Ý nghĩa tên gọi SMY": "Tên tiếng Việt: Câu lạc bộ Khoa học.\nTên tiếng Anh: SMY - STEM MyDinh.\nSMY không chỉ là cái tên mang tính biểu tượng của câu lạc bộ, nó còn mang ý nghĩa là “tiếng cười” - Không chỉ là tâm trạng vui vẻ mà còn đại diện cho tuổi trẻ đầy năng động, nhiệt huyết, tràn đầy sự vui tươi và sức sống.",
+      "Thông tin liên hệ": "Fanpage: https://www.facebook.com/STEMofMyDinh/\nGmail: stemofmydinh@gmail.com",
+      "Sứ mệnh": "Tạo dựng môi trường giao lưu, sinh hoạt lành mạnh, bổ ích và xây dựng nền tảng học tập hiệu quả thông qua các hoạt động về STEM (Science - Khoa học, Technology - Công nghệ, Engineering - Kỹ thuật, Mathematics - Toán học).\nNâng cao khả năng tư duy về các lĩnh vực khoa học và khả năng cạnh tranh trong thời đại phát triển mạnh mẽ của nền khoa học.",
       "Tầm nhìn": "Thông qua các hoạt động và chương trình góp phần thúc đẩy niềm yêu thích của học sinh tới các môn khoa học và tạo cơ hội tiếp xúc trực tiếp, tiếp thu và rèn luyện qua thực hành cho học sinh. Câu lạc bộ phối hợp với trường xây dựng các chuyên đề khoa học thông qua các hình thức khác nhau tiếp cận tới học sinh trong và ngoài trường.\n- Xây dựng các nhóm học sinh nhằm mục đích nghiên cứu, phát triển các lĩnh vực trong khả năng.",
       "Ban điều hành": "Cố vấn: Thầy Phạm Văn Tùng – GVBM Vật Lý.\nChủ tịch: Đoàn Phúc Uy Vũ - K5A8.\nPhó Chủ tịch: Đàm Đông Quân - K5A5",
-      "Các phân ban": "CLB gồm 3 ban: Ban Chuyên Môn: Tiểu ban Khoa học, Tiểu ban Công nghệ thông tin. Ban Truyền thông: Tiểu ban Thiết kế. Ban Sự kiện: Tiểu ban Tài chính, Tiểu ban Hậu cần",
+      "Các phân ban": "CLB gồm 3 ban:\n- Ban Chuyên Môn:\n  + Tiểu ban Khoa học\n  + Tiểu ban Công nghệ thông tin\n- Ban Truyền thông:\n  + Tiểu ban Thiết kế\n- Ban Sự kiện:\n  + Tiểu ban Tài chính\n  + Tiểu ban Hậu cần",
       "Thành viên trong từng ban": "Cập nhật sau",
       "Tên gọi": "Tên Tiếng Việt: Câu lạc bộ Khoa học.\nTên Tiếng Anh: STEM Mỹ Đình.\nTên viết tắt: SMY.",
       "Tôn chỉ": "Là nơi học tập, sáng tạo, thực hiện những thí nghiệm, dự án hay chương trình mà trên lớp ít thời gian thực hành. Tạo môi trường sinh hoạt lành mạnh, bổ ích góp phần làm mới suy nghĩ của mọi người về những môn khoa học khô khan.",
       "Mục đích": "Mục đích chung: SMY được thành lập với mục đích tạo không gian sinh hoạt thoải mái, tự do sáng tạo và gắn kết cộng đồng các bạn trẻ có mong muốn phát triển kỹ năng và tìm hiểu sâu hơn về các lĩnh vực STEM.\nMục đích cụ thể: CLB nhắm tới mô hình giáo dục STEM nhằm giúp mọi người tiếp cận nhiều hơn với các phương pháp mới từ đó phát triển theo hướng tích cực.",
-      "Chức năng": "Câu lạc bộ Khoa học sẽ cung cấp các thông tin bổ ích, thú vị về STEM, tạo dựng các thí nghiệm, trưng bày sản phẩm về khoa học, thu hút học sinh học hỏi, đào sâu kiến thức. Góp phần quảng bá hình ảnh, xây dựng hướng phát triển về các phương pháp giáo dục hiệu quả, lành mạnh.",
+      "Chức năng": "Câu lạc bộ Khoa học sẽ cung cấp các thông tin bổ ích, thú vị về STEM, tạo dựng các thí nghiệm, trưng bày sản phẩm về khoa học, thu hút học sinh học hỏi, đào sâu kiến thức.\nGóp phần quảng bá hình ảnh, xây dựng hướng phát triển về các phương pháp giáo dục hiệu quả, lành mạnh.",
       "Nhiệm vụ": "Lên kế hoạch và triển khai các dự án của CLB và nhà trường. Tạo nội dung cho các chương trình về STEM (VD: Ngày hội STEM).",
-      "Tài chính": "Câu lạc bộ hoạt động chủ yếu trên nền tảng mạng xã hội, trang thông tin truyền thông trực tuyến nên sẽ không thu quỹ CLB.",
+      "Tài chính": "Câu lạc bộ hoạt động chủ yếu trên nền tảng mạng xã hội, trang thông tin truyền thông trực tuyến nên sẽ không thu quỹ CLB. Nếu có sẽ thông báo sau.",
       "Khen thưởng": "Những thành viên, nhóm thành viên có đóng góp tích cực cho câu lạc bộ được ghi nhận trong quá trình tham gia các hoạt động sẽ được ban điều hành câu lạc bộ đề xuất với BCH Đoàn trường THPT Mỹ Đình khen thưởng.",
-      "Kỷ luật": "Những thành viên vi phạm quy chế tùy theo mức độ sẽ bị kỷ luật từ khiển trách đến khai trừ ra khỏi câu lạc bộ, chia làm ba mức: Mức 1: Nhắc nhở, Mức 2: Kỷ luật trước toàn câu lạc bộ, Mức 3: Khai trừ ra khỏi câu lạc bộ\nCác hình thức của mức độ kỷ luật cụ thể do ban điều hành câu lạc bộ đề ra và toàn thể câu lạc bộ thống nhất trên nguyên tắc biểu quyết dân chủ với sự đồng ý từ 50% chính thức tham gia biểu quyết trở lên.",
+      "Kỷ luật": "Những thành viên vi phạm quy chế tùy theo mức độ sẽ bị kỷ luật từ khiển trách đến khai trừ ra khỏi câu lạc bộ, chia làm ba mức:\nMức 1: Nhắc nhở.\nMức 2: Kỷ luật trước toàn câu lạc bộ.\nMức 3: Khai trừ ra khỏi câu lạc bộ.\nCác hình thức của mức độ kỷ luật cụ thể do ban điều hành câu lạc bộ đề ra và toàn thể câu lạc bộ thống nhất trên nguyên tắc biểu quyết dân chủ với sự đồng ý từ 50% chính thức tham gia biểu quyết trở lên.",
       "Tiêu chuẩn Hội viên": "Là học sinh trường THPT Mỹ Đình đạt hạnh kiểm Tốt. Không vi phạm pháp luật, nội quy nhà trường, điều lệ của câu lạc bộ.",
       "Quyền lợi của Hội viên": "Được tham gia các hoạt động của CLB. Được đề xuất các nguyện vọng, ý kiến chính đáng; được giúp đỡ và tạo điều kiện trong quá trình tham gia sinh hoạt. Được biểu dương, khen thưởng khi có những đóng góp tích cực, xuất sắc trong các hoạt động của CLB.",
       "Nghĩa vụ của Hội viên": "Tôn trọng và tuân thủ điều lệ của câu lạc bộ, giữ gìn tư cách hội viên. Tích cực tham gia các hoạt động của câu lạc bộ, thực hiện các nhiệm vụ được phân công. Thực hiện công tác tuyên truyền nhằm nâng cao uy tín và mở rộng tầm ảnh hưởng của câu lạc bộ. Giới thiệu và phát triển hội viên mới.",
       "Đăng ký làm Hội viên": "Người muốn trở thành hội viên chính thức của câu lạc bộ phải tự nguyện làm đơn và hồ sơ theo mẫu quy định. Đồng thời phải được phụ huynh xác nhận và đồng ý tham gia câu lạc bộ.",
       "Rút, xóa tên khỏi CLB": "Tự nguyện làm đơn xin rút khỏi Câu lạc bộ vì lý do cá nhân. Thành viên không tham gia sinh hoạt mà không có lý do chính đáng thì bị xóa tên trong danh sách hội viên. Thành viên vi phạm luật pháp và điều lệ của tổ chức gây ảnh hưởng xấu đến uy tín của câu lạc bộ thì bị khai trừ.",
-      "Đơn đăng ký tham gia CLB": "Đơn đăng ký tham gia câu lạc bộ gồm các thông tin cá nhân, thông tin phụ huynh, mục đích tham gia và cam kết. Bạn có thể liên hệ qua Gmail stemmydinh@gmail.com để nhận mẫu đơn.",
+      "Đơn đăng ký tham gia CLB": "Đơn đăng ký tham gia câu lạc bộ gồm các thông tin cá nhân, thông tin phụ huynh, mục đích tham gia và cam kết. Bạn có thể liên hệ qua Gmail stemofmydinh@gmail.com để nhận mẫu đơn.",
       "Quy chế hoạt động CLB": "Cập nhật sau",
       "Cách tham gia CLB SMY": "Đầu tháng 8, CLB tổ chức chào đón học sinh khóa mới, giới thiệu trên sân khấu, trình diễn thí nghiệm và tuyển thành viên. Bạn cần điền đơn đăng ký (có chữ ký phụ huynh) và gửi lại cho CLB. Theo dõi fanpage để biết thông tin chi tiết về đợt tuyển thành viên và các sự kiện sắp tới."
     };
@@ -1759,6 +1759,7 @@
         avatar.innerHTML = sender === 'user' ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
         const messageContent = document.createElement('div');
         messageContent.classList.add('message-content');
+        // Giữ nguyên textContent để bảo mật, CSS white-space: pre-wrap sẽ xử lý xuống dòng
         messageContent.textContent = text;
 
         if (sender === 'bot') {
@@ -1983,7 +1984,7 @@
           const question = this.textContent.trim();
           addMessage(question, 'user');
           showTyping();
-          const answer = faqData[question] || "Mọi thông tin thắc mắc xin liên hệ: Gmail: stemmydinh@gmail.com. Chủ tịch: Đoàn Phúc Uy Vũ - K5A8; Phó chủ tịch: Đàm Đông Quân - K5A5 hoặc nhắn tin trực tiếp qua trang ( https://www.facebook.com/STEMofMyDinh/ ) để nhận được phản hồi sớm nhất!";
+          const answer = faqData[question] || "Mọi thông tin thắc mắc xin liên hệ: Gmail: stemofmydinh@gmail.com. Chủ tịch: Đoàn Phúc Uy Vũ - K5A8; Phó chủ tịch: Đàm Đông Quân - K5A5 hoặc nhắn tin trực tiếp qua trang ( https://www.facebook.com/STEMofMyDinh/ ) để nhận được phản hồi sớm nhất!";
           setTimeout(() => {
             removeTyping();
             addMessage(answer, 'bot');
@@ -2082,7 +2083,7 @@
         } else {
           setTimeout(() => {
             removeTyping();
-            addMessage('Mọi thông tin thắc mắc xin liên hệ: Gmail: stemmydinh@gmail.com. Chủ tịch: Đoàn Phúc Uy Vũ - K5A8; Phó chủ tịch: Đàm Đông Quân - K5A5 hoặc nhắn tin trực tiếp qua trang để nhận được phản hồi sớm nhất!', 'bot');
+            addMessage('Mọi thông tin thắc mắc xin liên hệ: Gmail: stemofmydinh@gmail.com. Chủ tịch: Đoàn Phúc Uy Vũ - K5A8; Phó chủ tịch: Đàm Đông Quân - K5A5 hoặc nhắn tin trực tiếp qua trang để nhận được phản hồi sớm nhất!', 'bot');
           }, 600);
         }
       });
