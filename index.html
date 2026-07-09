@@ -1,5 +1,4 @@
-<html lang="vi" data-scribe-recorder-ready="true" class="brand-refresh">
-<head>
+<html lang="vi" data-scribe-recorder-ready="true" class="brand-refresh"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>SMY GPT</title>
@@ -726,24 +725,34 @@
     }
 
     
+    /* ===== CẢI TIẾN KHUNG NHẬP CHAT ===== */
     .chat-input-container {
       padding: 12px 0;
       background: transparent;
       flex-shrink: 0;
       margin: 0 0 10px;
+      position: relative;
     }
 
     .chat-form {
       display: flex;
-      gap: 10px;
-      align-items: flex-end;
+      gap: 12px;
+      align-items: center;
       background: var(--glass-bg-strong);
       backdrop-filter: blur(var(--blur-amount)) saturate(var(--saturation));
       -webkit-backdrop-filter: blur(var(--blur-amount)) saturate(var(--saturation));
-      border-radius: var(--radius-xl);
-      padding: 4px 4px 4px 16px;
+      border-radius: 60px; /* bo tròn nhiều hơn */
+      padding: 4px 4px 4px 20px;
       border: 1px solid var(--glass-border);
       box-shadow: var(--glass-shadow);
+      transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+      position: relative;
+    }
+
+    .chat-form:focus-within {
+      box-shadow: 0 8px 30px rgba(0, 122, 255, 0.15), 0 0 0 3px rgba(0, 122, 255, 0.15);
+      border-color: var(--apple-blue);
+      transform: scale(1.005);
     }
 
     body.dark-mode .chat-form {
@@ -752,6 +761,11 @@
       -webkit-backdrop-filter: blur(24px) saturate(2);
       border: 1px solid var(--dark-border);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    body.dark-mode .chat-form:focus-within {
+      box-shadow: 0 8px 30px rgba(0, 122, 255, 0.2), 0 0 0 3px rgba(0, 122, 255, 0.15);
+      border-color: var(--apple-teal);
     }
 
     .chat-input {
@@ -767,6 +781,7 @@
       transition: all var(--transition-fast);
       letter-spacing: -0.01em;
       outline: none;
+      font-family: inherit;
     }
 
     body.dark-mode .chat-input {
@@ -775,32 +790,98 @@
 
     .chat-input::placeholder {
       color: #8e8e93;
+      font-weight: 400;
+      letter-spacing: -0.01em;
     }
 
+    /* Nút gửi mới - icon mũi tên */
     .send-btn {
-      padding: 0 18px;
-      height: 48px;
-      border-radius: var(--radius);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
       border: none;
       background: linear-gradient(135deg, #007aff, #5856d6);
       color: #fff;
       cursor: pointer;
-      transition: all var(--transition-fast);
-      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
       box-shadow: 0 4px 14px rgba(0, 122, 255, 0.35);
-      letter-spacing: -0.01em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .send-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      border-radius: 50%;
     }
 
     .send-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(0, 122, 255, 0.45);
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: 0 8px 24px rgba(0, 122, 255, 0.5);
+    }
+
+    .send-btn:hover::after {
+      opacity: 1;
     }
 
     .send-btn:active {
-      transform: scale(0.95);
+      transform: scale(0.92) rotate(0deg);
+      box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
     }
 
+    .send-btn i {
+      transition: transform 0.3s ease;
+    }
+
+    .send-btn:hover i {
+      transform: translateX(3px) scale(1.05);
+    }
+
+    /* Trạng thái loading khi gửi */
+    .send-btn.loading {
+      pointer-events: none;
+      opacity: 0.7;
+      transform: scale(0.96);
+    }
+
+    .send-btn.loading i {
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Hiệu ứng sóng khi gửi thành công */
+    .send-btn.success {
+      background: var(--success);
+      box-shadow: 0 4px 14px rgba(52, 199, 89, 0.4);
+    }
+
+    .send-btn.success i {
+      animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+
+    
     .suggestions-container {
       position: absolute;
       bottom: calc(100% + 10px);
@@ -1208,6 +1289,20 @@
         padding: 14px 0;
         gap: 14px;
       }
+      .chat-form {
+        padding-left: 14px;
+        gap: 8px;
+      }
+      .send-btn {
+        width: 46px;
+        height: 46px;
+        font-size: 1.1rem;
+      }
+      .chat-input {
+        font-size: 14px;
+        min-height: 42px;
+        padding: 10px 0;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1238,17 +1333,19 @@
         font-size: 0.9rem;
       }
       .chat-form {
-        padding-left: 10px;
+        padding-left: 12px;
+        gap: 6px;
+        border-radius: 40px;
       }
       .chat-input {
-        padding: 10px 0;
+        padding: 8px 0;
         font-size: 14px;
-        min-height: 44px;
+        min-height: 40px;
       }
       .send-btn {
-        height: 44px;
-        padding: 0 14px;
-        font-size: 14px;
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
       }
       .suggestions-container {
         max-height: 150px;
@@ -1270,6 +1367,15 @@
       .message-content {
         padding: 9px 12px;
         font-size: 0.85rem;
+      }
+      .chat-input {
+        min-height: 36px;
+        padding: 6px 0;
+      }
+      .send-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
       }
     }
 
@@ -1368,7 +1474,7 @@
         
         <div class="history-section">
           <div class="section-title">Lịch sử trò chuyện</div>
-          <div class="history-list" id="historyList"><div class="history-item" style="background: rgba(0, 122, 255, 0.15);"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div></div>
+          <div class="history-list" id="historyList"><div class="history-item" style="background: rgba(0, 122, 255, 0.15);"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div></div>
         </div>
 
         
@@ -1467,12 +1573,14 @@
           <span id="ai-model-info">Đang sử dụng: Dữ liệu cục bộ</span>
         </div>
       </div>
-      <div class="chat-messages" id="chatMessages"><div class="message bot"><div class="avatar bot"><i class="fas fa-robot"></i></div><div class="message-content">Xin chào! Chào mừng bạn đến với SMY GPT. Mình được tạo ra để giúp bạn tìm hiểu nhanh về CLB Khoa học STEM MyDinh – từ thông tin CLB, cơ cấu tổ chức, quyền lợi hội viên cho đến cách tham gia. Bạn hãy click nút ☰ ở góc màn hình để chọn câu hỏi và bắt đầu.<div class="message-actions"><button class="action-btn" data-tooltip="Sao chép tin nhắn"><i class="fas fa-copy"></i></button><button class="action-btn" data-tooltip="Đọc thành tiếng"><i class="fas fa-volume-up"></i></button></div><div class="feedback-container"><button class="feedback-btn"><i class="fas fa-thumbs-up"></i> Hữu ích</button><button class="feedback-btn"><i class="fas fa-thumbs-down"></i> Không hữu ích</button></div></div></div></div>
+      <div class="chat-messages" id="chatMessages"><div class="message bot"><div class="avatar bot"></div><div class="message-content">Xin chào! Chào mừng bạn đến với SMY GPT. Mình được tạo ra để giúp bạn tìm hiểu nhanh về CLB Khoa học STEM MyDinh – từ thông tin CLB, cơ cấu tổ chức, quyền lợi hội viên cho đến cách tham gia. Bạn hãy click nút ☰ ở góc màn hình để chọn câu hỏi và bắt đầu.<div class="message-actions"><button class="action-btn" data-tooltip="Sao chép tin nhắn"><i class="fas fa-copy"></i></button><button class="action-btn" data-tooltip="Đọc thành tiếng"><i class="fas fa-volume-up"></i></button></div><div class="feedback-container"><button class="feedback-btn"><i class="fas fa-thumbs-up"></i> Hữu ích</button><button class="feedback-btn"><i class="fas fa-thumbs-down"></i> Không hữu ích</button></div></div></div></div>
       <div class="chat-input-container">
         <div class="suggestions-container" id="suggestionsContainer" style="display: none;"></div>
         <form class="chat-form" id="chatForm">
           <textarea class="chat-input" placeholder="Nhập câu hỏi của bạn..." id="chatInput"></textarea>
-          <button type="submit" class="send-btn">Gửi</button>
+          <button type="submit" class="send-btn" id="sendBtn" data-tooltip="Gửi tin nhắn">
+            <i class="fas fa-paper-plane"></i>
+          </button>
         </form>
       </div>
     </div>
@@ -1527,7 +1635,7 @@
         <div class="log-item"><strong> Log 2 – 12/2025:</strong> Tái cấu trúc thiết kế, thêm chế độ tích hợp API, hỗ trợ chế độ hiển thị điện thoại và máy tính.</div>
         <div class="log-item"><strong> Log 3 – 02/2026:</strong> Cập nhật giao diện, tối ưu hóa chế độ hiển thị trên điện thoại và máy tính, tự động thích ứng với từng loại thiết bị.</div>
         <div class="log-item"><strong> Log 4 – 06/2026:</strong> Đại tu toàn bộ bố cục website, khắc phục lỗi chồng chéo nội dung.</div>
-        <div class="log-item"><strong> Log 5 – 07/2026:</strong> Thêm ảnh đại diện (avatar) cho bot chat. Tái cấu trúc toàn bộ mã nguồn.</div>
+        <div class="log-item"><strong> Log 5 – 07/2026:</strong> Thêm ảnh đại diện (avatar) cho bot chat. Sửa lại khung nhập liệu.</div>       
       </div>
       <div class="modal-footer">
         <button class="modal-btn secondary" id="updateLogCloseBtnFooter">Đóng</button>
@@ -1595,6 +1703,7 @@
       const chatMessages = document.getElementById('chatMessages');
       const chatForm = document.getElementById('chatForm');
       const chatInput = document.getElementById('chatInput');
+      const sendBtn = document.getElementById('sendBtn');
       const suggestionsContainer = document.getElementById('suggestionsContainer');
       const toast = document.getElementById('toast');
       const apiKeyModal = document.getElementById('apiKeyModal');
@@ -1726,7 +1835,7 @@
       }
 
       function updateChatTitle(title) {
-        // Không cần cập nhật
+        // không cần cập nhật
       }
 
       function addMessageToSession(role, content) {
@@ -2216,23 +2325,41 @@
         suggestionsContainer.style.display = 'none';
         showTyping();
 
+        
+        sendBtn.classList.add('loading');
+        sendBtn.innerHTML = '<i class="fas fa-spinner"></i>';
+
         let answer = findAnswer(msg);
         if (answer) {
           setTimeout(() => {
             removeTyping();
             addMessage(answer, 'bot');
+            sendBtn.classList.remove('loading');
+            sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
+            sendBtn.classList.add('success');
+            setTimeout(() => sendBtn.classList.remove('success'), 400);
           }, 600);
           return;
         }
 
         if (currentAI === 'openai' && openaiApiKey) {
-          callOpenAI(msg);
+          callOpenAI(msg).finally(() => {
+            sendBtn.classList.remove('loading');
+            sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
+          });
         } else if (currentAI === 'gemini' && geminiApiKey) {
-          callGemini(msg);
+          callGemini(msg).finally(() => {
+            sendBtn.classList.remove('loading');
+            sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
+          });
         } else {
           setTimeout(() => {
             removeTyping();
             addMessage('Mọi thông tin thắc mắc xin liên hệ: Gmail: stemofmydinh@gmail.com. Chủ tịch: Đoàn Phúc Uy Vũ - K5A8; Phó chủ tịch: Đàm Đông Quân - K5A5 hoặc nhắn tin trực tiếp qua trang để nhận được phản hồi sớm nhất!', 'bot');
+            sendBtn.classList.remove('loading');
+            sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
+            sendBtn.classList.add('success');
+            setTimeout(() => sendBtn.classList.remove('success'), 400);
           }, 600);
         }
       });
@@ -2275,5 +2402,6 @@
   </script>
 
 
-<scribe-shadow id="crxjs-ext" data-crx="okfkdaglfjjjfefdcppliegebpoegaii" style="position: fixed; width: 0px; height: 0px; top: 0px; left: 0px; z-index: 2147483647; overflow: visible; visibility: visible;"></scribe-shadow></body>
-</html>
+<scribe-shadow id="crxjs-ext" data-crx="okfkdaglfjjjfefdcppliegebpoegaii" style="position: fixed; width: 0px; height: 0px; top: 0px; left: 0px; z-index: 2147483647; overflow: visible; visibility: visible;"></scribe-shadow>
+
+</body></html>
