@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-scribe-recorder-ready="true" class="brand-refresh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>SMY GPT</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
     /* ===== ROOT & RESET ===== */
     :root {
@@ -583,8 +582,12 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
+    /* ===== THAY ĐỔI AVATAR BOT ===== */
     .avatar.bot {
-      background: linear-gradient(135deg, #007aff, #5856d6);
+      background-image: url('smypic.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: transparent;
       color: #fff;
     }
 
@@ -1298,9 +1301,7 @@
       <div class="sidebar-scroll" id="sidebarScroll">
         <!-- CÁC NÚT CHỨC NĂNG -->
         <div class="sidebar-tools">
-          <div class="tool-item" id="darkModeToggle" data-tooltip="Chuyển đổi chế độ tối/sáng">
-            <i class="fas fa-moon"></i> Chế độ tối
-          </div>
+          <div class="tool-item" id="darkModeToggle" data-tooltip="Chuyển đổi chế độ tối/sáng"><i class="fas fa-moon"></i> Chế độ tối</div>
           <div class="tool-item" id="readAloud" data-tooltip="Đọc tin nhắn cuối">
             <i class="fas fa-volume-up"></i> Đọc tin nhắn
           </div>
@@ -1318,9 +1319,7 @@
         <!-- LỊCH SỬ TRÒ CHUYỆN -->
         <div class="history-section">
           <div class="section-title">Lịch sử trò chuyện</div>
-          <div class="history-list" id="historyList">
-            <!-- Được render bằng JS -->
-          </div>
+          <div class="history-list" id="historyList"><div class="history-item" style="background: rgba(0, 122, 255, 0.15);"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div><div class="history-item"><span class="title">Cuộc trò chuyện mới</span><button class="delete-btn" data-tooltip="Xóa cuộc trò chuyện"><i class="fas fa-trash"></i></button></div></div>
         </div>
 
         <!-- CÂU HỎI THƯỜNG GẶP -->
@@ -1419,16 +1418,9 @@
           <span id="ai-model-info">Đang sử dụng: Dữ liệu cục bộ</span>
         </div>
       </div>
-      <div class="chat-messages" id="chatMessages">
-        <div class="message bot">
-          <div class="avatar bot"><i class="fas fa-robot"></i></div>
-          <div class="message-content">
-            Xin chào! Chào mừng bạn đến với SMY GPT. Mình được tạo ra để giúp bạn tìm hiểu nhanh về CLB Khoa học STEM MyDinh – từ thông tin CLB, cơ cấu tổ chức, quyền lợi hội viên cho đến cách tham gia. Bạn hãy click nút ☰ ở góc màn hình để chọn câu hỏi và bắt đầu.
-          </div>
-        </div>
-      </div>
+      <div class="chat-messages" id="chatMessages"><div class="message bot"><div class="avatar bot"><i class="fas fa-robot"></i></div><div class="message-content">Xin chào! Chào mừng bạn đến với SMY GPT. Mình được tạo ra để giúp bạn tìm hiểu nhanh về CLB Khoa học STEM MyDinh – từ thông tin CLB, cơ cấu tổ chức, quyền lợi hội viên cho đến cách tham gia. Bạn hãy click nút ☰ ở góc màn hình để chọn câu hỏi và bắt đầu.<div class="message-actions"><button class="action-btn" data-tooltip="Sao chép tin nhắn"><i class="fas fa-copy"></i></button><button class="action-btn" data-tooltip="Đọc thành tiếng"><i class="fas fa-volume-up"></i></button></div><div class="feedback-container"><button class="feedback-btn"><i class="fas fa-thumbs-up"></i> Hữu ích</button><button class="feedback-btn"><i class="fas fa-thumbs-down"></i> Không hữu ích</button></div></div></div></div>
       <div class="chat-input-container">
-        <div class="suggestions-container" id="suggestionsContainer"></div>
+        <div class="suggestions-container" id="suggestionsContainer" style="display: none;"></div>
         <form class="chat-form" id="chatForm">
           <textarea class="chat-input" placeholder="Nhập câu hỏi của bạn..." id="chatInput"></textarea>
           <button type="submit" class="send-btn">Gửi</button>
@@ -1438,14 +1430,14 @@
   </div>
 
   <!-- ===== TOAST ===== -->
-  <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span>Đây là thông báo</span></div>
+  <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span>Đã tạo cuộc trò chuyện mới</span></div>
 
   <!-- ===== MODAL API ===== -->
   <div class="modal" id="apiKeyModal">
     <div class="modal-content">
       <div class="modal-header">
         <h2><i class="fas fa-key"></i> Cài đặt API Key</h2>
-        <button class="modal-close" id="modalCloseBtn">&times;</button>
+        <button class="modal-close" id="modalCloseBtn">×</button>
       </div>
       <div class="api-tabs">
         <div class="api-tab active" data-tab="openai">OpenAI</div>
@@ -1747,7 +1739,7 @@
         messageEl.classList.add('message', sender);
         const avatar = document.createElement('div');
         avatar.classList.add('avatar', sender);
-        avatar.innerHTML = sender === 'user' ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
+        avatar.innerHTML = sender === 'user' ? '<i class="fas fa-user"></i>' : ''; // bot avatar sẽ có ảnh nền CSS
         const messageContent = document.createElement('div');
         messageContent.classList.add('message-content');
         messageContent.textContent = text;
@@ -1850,7 +1842,7 @@
         typingEl.id = 'typing-indicator';
         const avatar = document.createElement('div');
         avatar.classList.add('avatar', 'bot');
-        avatar.innerHTML = '<i class="fas fa-robot"></i>';
+        // avatar không cần icon vì đã có ảnh nền CSS
         const content = document.createElement('div');
         content.classList.add('typing-indicator');
         content.innerHTML = `<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>`;
@@ -2204,5 +2196,7 @@
       renderHistory();
     });
   </script>
-</body>
+
+
+<scribe-shadow id="crxjs-ext" data-crx="okfkdaglfjjjfefdcppliegebpoegaii" style="position: fixed; width: 0px; height: 0px; top: 0px; left: 0px; z-index: 2147483647; overflow: visible; visibility: visible;"></scribe-shadow></body>
 </html>
