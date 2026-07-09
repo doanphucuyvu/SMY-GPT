@@ -2401,7 +2401,53 @@
     });
   </script>
 
+  <script>
+    (function() {
+      
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
 
-<scribe-shadow id="crxjs-ext" data-crx="okfkdaglfjjjfefdcppliegebpoegaii" style="position: fixed; width: 0px; height: 0px; top: 0px; left: 0px; z-index: 2147483647; overflow: visible; visibility: visible;"></scribe-shadow>
+      
+      document.addEventListener('keydown', function(e) {
+        // F12
+        if (e.key === 'F12') {
+          e.preventDefault();
+          return false;
+        }
+        // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C 
+        if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) {
+          e.preventDefault();
+          return false;
+        }
+        // Ctrl+U 
+        if (e.ctrlKey && e.key === 'u') {
+          e.preventDefault();
+          return false;
+        }
+        // Ctrl+S 
+        if (e.ctrlKey && e.key === 's') {
+          e.preventDefault();
+          return false;
+        }
+        // Ctrl+Shift+K 
+        if (e.ctrlKey && e.shiftKey && e.key === 'K') {
+          e.preventDefault();
+          return false;
+        }
+        // Ctrl+Shift+E (Firefox inspector)
+        if (e.ctrlKey && e.shiftKey && e.key === 'E') {
+          e.preventDefault();
+          return false;
+        }
+        // Ctrl+Shift+U (Firefox view source?)
+        if (e.ctrlKey && e.shiftKey && e.key === 'U') {
+          e.preventDefault();
+          return false;
+        }
+      });
+    })();
+  </script>
 
 </body></html>
