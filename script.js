@@ -1,5 +1,5 @@
 const faqData = {
-  "Thông tin liên hệ": "Nếu bạn muốn liên hệ với SMY, bạn có thể qua:\n\n• Fanpage: https://www.facebook.com/STEMofMyDinh/\n• Gmail: stemofmydinh@gmail.com",
+  "Thông tin liên hệ": "Nếu bạn muốn liên hệ với SMY, bạn có thể qua:\n\n• Fanpage: https://www.facebook.com/STEMofMyDinh/\n• Gmail: stemmydinh@gmail.com",
 
   "Ban điều hành": "Ban điều hành hiện tại của SMY gồm:\n\n• Cố vấn: Thầy Phạm Văn Tùng – GVBM Vật Lý.\n• Chủ tịch: Đoàn Phúc Uy Vũ - K5A8.\n• Phó Chủ tịch: Đàm Đông Quân - K5A5.",
 
@@ -41,7 +41,7 @@ const faqData = {
 
   "Rút, xóa tên khỏi CLB": "Nếu muốn rời SMY, bạn có thể tự nguyện làm đơn xin rút khỏi CLB vì lý do cá nhân.\n\nNhững hội viên không tham gia sinh hoạt trong thời gian dài mà không có lý do chính đáng có thể bị xóa tên khỏi danh sách hội viên.\n\nNhững trường hợp vi phạm pháp luật hoặc điều lệ CLB, gây ảnh hưởng đến uy tín của SMY sẽ bị khai trừ.",
 
-  "Đơn đăng ký tham gia CLB": "Đơn đăng ký gồm các thông tin cá nhân, thông tin phụ huynh, mục đích tham gia và cam kết của thành viên.\n\nNếu cần nhận mẫu đơn, bạn có thể liên hệ qua Gmail: stemofmydinh@gmail.com.",
+  "Đơn đăng ký tham gia CLB": "Đơn đăng ký gồm các thông tin cá nhân, thông tin phụ huynh, mục đích tham gia và cam kết của thành viên.\n\nNếu cần nhận mẫu đơn, bạn có thể liên hệ qua Gmail: stemmydinh@gmail.com.",
 
   "Quy chế hoạt động CLB": "Thông tin này sẽ được SMY cập nhật trong thời gian tới.",
 
@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const question = this.textContent.trim();
       addMessage(question, 'user');
       showTyping();
-      const answer = faqData[question] || "Mọi thông tin thắc mắc xin liên hệ: Gmail: stemofmydinh@gmail.com. Chủ tịch: Đoàn Phúc Uy Vũ - K5A8; Phó chủ tịch: Đàm Đông Quân - K5A5 hoặc nhắn tin trực tiếp qua trang ( https://www.facebook.com/STEMofMyDinh/ ) để nhận được phản hồi sớm nhất!";
+      const answer = faqData[question] || "Mọi thông tin thắc mắc xin liên hệ: Gmail: stemmydinh@gmail.com. Chủ tịch: Đoàn Phúc Uy Vũ - K5A8; Phó chủ tịch: Đàm Đông Quân - K5A5 hoặc nhắn tin trực tiếp qua trang ( https://www.facebook.com/STEMofMyDinh/ ) để nhận được phản hồi sớm nhất!";
       setTimeout(() => {
         removeTyping();
         addMessage(answer, 'bot');
@@ -448,7 +448,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       setTimeout(() => {
         removeTyping();
-        addMessage('Mọi thông tin thắc mắc xin liên hệ: Gmail: stemofmydinh@gmail.com. Chủ tịch: Đoàn Phúc Uy Vũ - K5A8; Phó chủ tịch: Đàm Đông Quân - K5A5 hoặc nhắn tin trực tiếp qua trang để nhận được phản hồi sớm nhất!', 'bot');
+        addMessage('Mọi thông tin thắc mắc xin liên hệ: Gmail: stemmydinh@gmail.com. Chủ tịch: Đoàn Phúc Uy Vũ - K5A8; Phó chủ tịch: Đàm Đông Quân - K5A5 hoặc nhắn tin trực tiếp qua trang để nhận được phản hồi sớm nhất!', 'bot');
         sendBtn.classList.remove('loading');
         sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
         sendBtn.classList.add('success');
