@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const apiKeyModal = document.getElementById('apiKeyModal');
 
   // Khởi tạo mặc định với API Key của bạn - Vào là chat luôn
-  let openrouterApiKey = localStorage.getItem('openrouterApiKey') || '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';
+  let openrouterApiKey = localStorage.getItem('openrouterApiKey') || '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';
   let openrouterModel = localStorage.getItem('openrouterModel') || 'inclusionai/ling-3.0-tiny:free';
   
   // Trạng thái AI mặc định luôn là openrouter
